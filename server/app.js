@@ -2,16 +2,19 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const PORT = 4000;
 
+app.use(cors());
+
 mongoose.connect('mongodb+srv://martin:test123@cluster.arujq.mongodb.net/cluster?retryWrites=true&w=majority');
 mongoose.connection.once('open', () => console.log('database connected succesfully'));
 
+
 app.use('/graphql', graphqlHTTP({
-    schema,
-    graphiql: true
+    schema
 }));
 
 
