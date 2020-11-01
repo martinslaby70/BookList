@@ -1,7 +1,7 @@
 interface author{
-    name?: string,
+    name: string,
     age?: number,
-    id?: string
+    id: string
 }
 
 export default author;

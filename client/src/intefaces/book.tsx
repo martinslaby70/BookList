@@ -1,7 +1,8 @@
 interface book {
-    name?: string,
-    authorId?: string,
-    id?: string
+    name: string,
+    id: string,
+    genre?: string,
+    authorId?: string
 }
 
 export default book;
