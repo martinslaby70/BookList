@@ -9,7 +9,12 @@ const PORT = 4000;
 
 app.use(cors());
 
-mongoose.connect('mongodb+srv://martin:test123@cluster.arujq.mongodb.net/cluster?retryWrites=true&w=majority');
+const mongoOptions = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+}
+mongoose.connect('mongodb+srv://martin:test123@cluster.arujq.mongodb.net/cluster?retryWrites=true&w=majority', mongoOptions);
+
 mongoose.connection.once('open', () => console.log('database connected succesfully'));
 
 
