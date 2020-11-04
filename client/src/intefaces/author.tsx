@@ -1,7 +1,10 @@
+import book from './book';
+
 interface author{
     name: string,
+    id: string,
     age?: number,
-    id: string
+    books?: book[]
 }
 
 export default author;
