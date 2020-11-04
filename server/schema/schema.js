@@ -5,6 +5,7 @@ const _ = require('lodash');
 const Book = require('./../models/book');
 const Author = require('./../models/author');
 const { Mongoose } = require('mongoose');
+const book = require('./../models/book');
 
 
 const { 
@@ -117,9 +118,22 @@ const Mutation = new GraphQLObjectType({
                 });
                 return book.save();
             }
+        },
+        removeBook: {
+            type: BookType,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLID)}
+            },
+            resolve(parent, args){
+                console.log(args.id);
+                book.findByIdAndDelete(args.id, (err, res) => {
+                    if (err) console.log(err)
+                })
+                return {name: "Item deleted successfully"};
+            }
         }
     }
-})
+});
 
 module.exports = new GraphQLSchema({
     query: RootQuery,

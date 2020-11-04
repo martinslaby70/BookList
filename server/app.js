@@ -19,6 +19,7 @@ mongoose.connection.once('open', () => console.log('database connected succesful
 
 
 app.use('/graphql', graphqlHTTP({
+    graphiql: true,
     schema
 }));
 
