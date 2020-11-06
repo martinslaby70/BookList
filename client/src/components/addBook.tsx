@@ -15,7 +15,7 @@ const AddBook = () => {
     const [genre, setGenre] = useState('');
     const [authorId, setAuthorId] = useState('');
 
-    const displayAuthors = () => {
+    const DisplayAuthors = () => {
         if (loading) return null
         if (error) return 'something went wrong'
         return data.authors.map((author: author) => <option key={author.id} value={author.id}>{author.name}</option>);    
@@ -51,7 +51,7 @@ const AddBook = () => {
                 <label>Author:</label>
                 <select onChange={(e) => setAuthorId(e.target.value)}>
                     <option>Select author</option>
-                    {displayAuthors()}
+                    <DisplayAuthors />
                 </select>
             </div>
 

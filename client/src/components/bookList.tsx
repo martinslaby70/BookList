@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { useQuery} from '@apollo/client';
+
+//apollo
+import { useMutation, useQuery} from '@apollo/client';
+import { getBooksQuery, removeBookMutation, getBookQuery} from './../queries/queries';
 //interfaces
 import book from './../intefaces/book';
-import {getBooksQuery} from './../queries/queries';
+
+//components
 import BookDetails from './bookDetails';
 
 
@@ -10,21 +14,39 @@ const BookList = () => {
     const [bookIdToShow, setBookIdToShow] = useState('');
 
     const { loading, error, data } = useQuery(getBooksQuery);
+    const [removeBook] = useMutation(removeBookMutation); 
 
+    const handleRemove = (id: string) => {
+        removeBook({
+            variables: {
+                id
+            },
+            refetchQueries: [
+                {
+                    query: getBooksQuery
+                },
+                {
+                    query: getBookQuery
+                }
+            ]           
+        });
+    }
+    
     const DisplayBooks = () => {
         if(loading) return <option disabled>Loading....</option>
         if(error) return <p>Ops! Something went wrong</p>
 
         return data.books.map((book: book) => {
             return(
-                <li key={book.id} onClick={() => setBookIdToShow(book.id)}>{book.name}</li>
+                <li key={book.id}> 
+                    <p onClick={() => setBookIdToShow(book.id)}>{book.name}</p>
+                    <button onClick={() => handleRemove(book.id)}> &#10005; {book.id}</button> 
+                </li>
             )
         })
     }
 
-    const deleteBook = (bookId: string) => {
-        
-    }
+    
 
     return(
         <div>
