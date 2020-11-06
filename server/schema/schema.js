@@ -34,6 +34,14 @@ const BookType = new GraphQLObjectType({
     })
 });
 
+const messageType = new GraphQLObjectType({
+    name: 'msg',
+    fields: () => ({
+        removedBookId: {type: GraphQLID},
+        msg: {type: GraphQLString}
+    })
+});
+
 const AuthorType = new GraphQLObjectType({
     name: 'Author',
     fields: () => ({
@@ -120,16 +128,15 @@ const Mutation = new GraphQLObjectType({
             }
         },
         removeBook: {
-            type: BookType,
+            type: messageType,
             args: {
                 id: {type: new GraphQLNonNull(GraphQLID)}
             },
             resolve(parent, args){
-                console.log(args.id);
                 book.findByIdAndDelete(args.id, (err, res) => {
-                    if (err) console.log(err)
-                })
-                return {name: "Item deleted successfully"};
+                    if (err) console.log(err);
+                });
+                return {msg: "item deleted successfully"}
             }
         }
     }
