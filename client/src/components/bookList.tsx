@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 
 //apollo
 import { useMutation, useQuery} from '@apollo/client';
-import { getBooksQuery, removeBookMutation, getBookQuery} from './../queries/queries';
+import { getBooksQuery, removeBookMutation} from './../queries/queries';
 //interfaces
 import book from './../intefaces/book';
 
 //components
 import BookDetails from './bookDetails';
+
+//scss
+import './../scss/list.scss';
 
 
 const BookList = () => {
@@ -17,6 +20,9 @@ const BookList = () => {
     const [removeBook] = useMutation(removeBookMutation); 
 
     const handleRemove = (id: string) => {
+        if(id === bookIdToShow)
+            setBookIdToShow('');
+
         removeBook({
             variables: {
                 id
@@ -24,9 +30,6 @@ const BookList = () => {
             refetchQueries: [
                 {
                     query: getBooksQuery
-                },
-                {
-                    query: getBookQuery
                 }
             ]           
         });
@@ -40,7 +43,7 @@ const BookList = () => {
             return(
                 <li key={book.id}> 
                     <p onClick={() => setBookIdToShow(book.id)}>{book.name}</p>
-                    <button onClick={() => handleRemove(book.id)}> &#10005; {book.id}</button> 
+                    <button onClick={() => handleRemove(book.id)}> &#10005;</button> 
                 </li>
             )
         })
@@ -49,12 +52,16 @@ const BookList = () => {
     
 
     return(
-        <div>
-            <h3>You currently have - {data?.books.length} books</h3>
-            <ul id="book-list">
-                <DisplayBooks />
-            </ul>
-            <BookDetails bookId={bookIdToShow}/>
+        <div className="list">
+            <div className="bookList">
+                <h3>You currently have - {data?.books.length} books</h3>
+                <ul id="book-list">
+                    <DisplayBooks />
+                </ul>
+            </div>
+            <div className="bookDetails">
+                <BookDetails bookId={bookIdToShow}/>
+            </div>
         </div>
     )
 }

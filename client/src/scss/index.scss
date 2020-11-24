@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+  overflow: hidden;
+ 
+  
+  background-image: linear-gradient(to right, rgba(245, 246, 252, 0.7) 0%,rgba(255, 255, 255, 0.652) 60%), url("./../imgs/books.jpg");
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

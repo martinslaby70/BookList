@@ -16,7 +16,7 @@ const BookDetails = ({bookId}: props) => {
     
     const DisplayBookDetails = () => {
        
-        if (bookId === '') return <p>Click on a book to display details</p>
+        if (bookId === '') return <div><h3>Click on a book to display details</h3></div>
         if(loading) return <p>loading</p>
         if(error) return <p>error</p>
 
@@ -25,9 +25,10 @@ const BookDetails = ({bookId}: props) => {
         return book ? (
             <div>
                 <h2>{book.name}</h2>
-                <p>{book.genre}</p>
-                <p>{book.author?.name}</p>
-                <p>all books by this author</p>
+                <p><span>Genre : </span>{book.genre}</p>
+                <p><span>Author: </span>{book.author?.name}</p>
+                <p className="gap">Other books by {book.author?.name}</p>
+
                 <ul>
                     {book.author!.books!.map( (book: book) => {
                         return(

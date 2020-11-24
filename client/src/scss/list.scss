@@ -1,0 +1,130 @@
+.list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+
+    .bookList, .bookDetails{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 100px;
+        min-width: 400px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: all .5s ease-in-out;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 60vh;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+            
+        }
+
+        &::-webkit-scrollbar-track {
+            margin-right: 10px;             
+        }
+                   
+        &::-webkit-scrollbar-thumb {
+            background:#ebe1da; 
+            
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: rgb(181, 173, 173); 
+        }
+    }
+
+    .bookList{
+       
+        
+        
+        h3{
+            padding: 50px;
+            margin-top: 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.864);
+            width: 100%;
+            text-align: center;
+        }
+
+        ul{
+            display: flex;
+            flex-direction: column-reverse;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: baseline;
+                cursor: pointer;
+                p{
+                    padding-right: 10px;
+                }
+                button{
+                    width: 0px;
+                    padding: 0px;
+                    overflow: hidden;
+                    cursor: pointer;
+                    
+                    border: 0;
+                    background-color: transparent;
+                    color: red;
+                    font-weight: bolder;
+                    border-radius: 5px;
+                    transition: all .2s ease-in-out;
+
+                    &:hover{
+                        background-color: red;
+                        color: white;
+                    }
+                }
+                &:hover>button {
+                    width: 25px;
+                    padding: 3px 6px;
+                }
+            }
+        }
+    }
+    .bookDetails{
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        
+        div{
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start; 
+
+            h2{
+                text-decoration: underline;
+                letter-spacing: 1px;
+            }
+            p{
+                margin-top: 0px;
+
+                >span{
+                  font-weight: bold;  
+                  margin-right: 10px;
+                }
+
+                &.gap{
+                    margin-top: 30px !important;
+                }
+                
+            }
+            ul{
+                margin: 0;
+                
+            }
+            
+        }
+        
+    }
+}
+
+

@@ -3,7 +3,8 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 // components
 import BookList from './components/bookList';
-import AddBook from './components/addBook';
+import Footer from './components/footer';
+
 
 //apollo setup
 const client = new ApolloClient({
@@ -20,7 +21,8 @@ const App = () => {
       <ApolloProvider client={client}>
         
         <BookList />
-        <AddBook />
+
+        <Footer />
 
       </ApolloProvider>
     </div>
