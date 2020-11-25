@@ -24,18 +24,20 @@ const BookDetails = ({bookId}: props) => {
 
         return book ? (
             <div>
-                <h2>{book.name}</h2>
-                <p><span>Genre : </span>{book.genre}</p>
-                <p><span>Author: </span>{book.author?.name}</p>
-                <p className="gap">All books by {book.author?.name}</p>
+                <div className="content">
+                    <h2>{book.name}</h2>
+                    <p><span>Genre : </span>{book.genre}</p>
+                    <p><span>Author: </span>{book.author?.name}</p>
+                    <p className="gap">All books by {book.author?.name}</p>
 
-                <ul>
-                    {book.author!.books!.map( (book: book) => {
-                        return(
-                            <li key={book.id}>{book.name}</li>
-                        )
-                    })}
-                </ul>
+                    <ul>
+                        {book.author!.books!.map( (book: book) => {
+                            return(
+                                <li key={book.id}>{book.name}</li>
+                            )
+                        })}
+                    </ul>
+                </div>
             </div>
         ): (null)
     }
