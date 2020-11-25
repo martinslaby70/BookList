@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 //apollo
 import { useMutation, useQuery} from '@apollo/client';
-import { getBooksQuery, removeBookMutation} from './../queries/queries';
+import { getBooksQuery, getBookQuery ,removeBookMutation} from './../queries/queries';
 //interfaces
 import book from './../intefaces/book';
 
@@ -10,7 +10,7 @@ import book from './../intefaces/book';
 import BookDetails from './bookDetails';
 
 //scss
-import './../scss/list.scss';
+import './../scss/lists.scss';
 
 
 const BookList = () => {
@@ -43,7 +43,8 @@ const BookList = () => {
             return(
                 <li key={book.id}> 
                     <p onClick={() => setBookIdToShow(book.id)}>{book.name}</p>
-                    <button onClick={() => handleRemove(book.id)}> &#10005;</button> 
+                    <button onClick={() => setBookIdToShow(book.id)}>&#128269;</button> 
+                    <button onClick={() => handleRemove(book.id)}>&#10005;</button> 
                 </li>
             )
         })

@@ -46,7 +46,7 @@
                     border: 2px solid #ebe1da;
                     background-color:  #ebe1da;
                     border-radius: 5px;
-                    outline: 0px;
+                    outline: 0px;                    
                     box-shadow: none;
                     transition: background-color .15s ease-in-out;
 
@@ -80,7 +80,7 @@
     .Dropdown-menu{
         margin-top: 5px;
         overflow-x: hidden;
-        height: 90px;
+        max-height: 90px;
         .Dropdown-option{
             padding: 2px;
         }

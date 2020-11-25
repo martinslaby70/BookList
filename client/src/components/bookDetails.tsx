@@ -27,7 +27,7 @@ const BookDetails = ({bookId}: props) => {
                 <h2>{book.name}</h2>
                 <p><span>Genre : </span>{book.genre}</p>
                 <p><span>Author: </span>{book.author?.name}</p>
-                <p className="gap">Other books by {book.author?.name}</p>
+                <p className="gap">All books by {book.author?.name}</p>
 
                 <ul>
                     {book.author!.books!.map( (book: book) => {
